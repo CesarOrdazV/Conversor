@@ -5,8 +5,15 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import com.excepcion.Excepcion;
+
 public class URLReader {
-    public String getRatio(String codigoMoneda) {
+    public String getRatio(String codigoMoneda) throws Excepcion {
+
+        if (codigoMoneda.equals("USD")) {
+            return "1.0";
+        }
+
         KeyManager manager = new KeyManager();
         final String KEY_ID = manager.readKey(".env/info.key");
         StringBuilder contenido = new StringBuilder();
@@ -31,7 +38,11 @@ public class URLReader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return contenido.toString();
+        
+        if (contenido.length() != 0) {
+            return contenido.toString();
+        } else {
+            throw new Excepcion("No existe el código de moneda.");
+        }
     }
 }
