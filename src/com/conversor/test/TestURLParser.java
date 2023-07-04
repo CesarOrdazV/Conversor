@@ -1,11 +1,11 @@
 package com.conversor.test;
 
-import com.conversor.connection.URLParser;
+import com.conversor.connection.URLReader;
 
 public class TestURLParser {
     public static void main(String[] args) {
-        URLParser parser = new URLParser();
-        String resultado = parser.getRatio("MXN");
+        URLReader reader = new URLReader();
+        String resultado = reader.getRatio("MXN");
         System.out.println(resultado + " longitud: " + resultado.length());
     }
 }

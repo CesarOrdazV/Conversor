@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class URLParser {
+public class URLReader {
     public String getRatio(String codigoMoneda) {
         KeyManager manager = new KeyManager();
         final String KEY_ID = manager.readKey(".env/info.key");
