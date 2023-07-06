@@ -1,9 +1,10 @@
 package com.conversor.test;
 
 import com.conversor.model.Moneda;
+import com.excepcion.Excepcion;
 
 public class TestConversor {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Excepcion {
         Moneda pesos = new Moneda("MXN");
         Moneda libras = new Moneda("GBP");
         Moneda dolares = new Moneda("USD");
