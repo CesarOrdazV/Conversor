@@ -1,4 +1,4 @@
-# Conversor - Challenge ONE Java Backend
+#Conversor - Challenge ONE Java Backend
 
 <h4 align="center">:construction: Proyecto en construcción :construction:</h4>
 
@@ -13,7 +13,7 @@ Consiste en una serie de herramientas de conversión para las cantidades:
 5. Velocidad.
 6. Temperatura.
 
-## Moneda
+##Moneda
 
 La función principal de este conversor consiste en convertir entre las divisas:
 
@@ -42,7 +42,7 @@ Al hacer uso de la clase `BigDecimal` de Java el conversor acepta el uso de nota
 
 ![Conversor de moneda.](./screenshoots/exponentialNotation.png)
 
-### Open Exchange Rates APP_ID
+###Open Exchange Rates APP_ID
 
 El programa consume la API [Open Exchange Rates](https://openexchangerates.org/) la cual posee una versión sin costo, pero requiere una APP_ID. Para utilizar su propia APP_ID guadela en el archivo `info.key` en el directorio `.env` dentro del directorio raíz del proyecto, bajo el formato:
 
@@ -51,7 +51,7 @@ El programa consume la API [Open Exchange Rates](https://openexchangerates.org/)
 'Aquí va su APP_ID' 
 ---- END KEY ----
 ```
-### Uso de la clase `Moneda`
+###Uso de la clase `Moneda`
 
 Dentro de la paquetería `com.model` se encuentra la clase `Moneda` la cual se puede utilizar para instanciar una moneda al proveer con el correspondiente código de la moneda:
 
