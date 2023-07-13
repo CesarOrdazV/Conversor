@@ -16,7 +16,7 @@ public class Moneda {
     }
 
     public String conversion(String monto, Moneda monedaDestino) {
-        BigDecimal montoBD = new BigDecimal(monto);
+        BigDecimal montoBD = new BigDecimal(monto).setScale(2);
 
         montoBD = montoBD.divide(monedaDestino.ratio, rm).multiply(ratio).setScale(2, rm);
 

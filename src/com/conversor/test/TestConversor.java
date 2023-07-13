@@ -9,8 +9,8 @@ public class TestConversor {
         Moneda libras = new Moneda("GBP");
         Moneda dolares = new Moneda("USD");
 
-        System.out.println("Usted tiene 100 pesos que equivalen a " + libras.conversion("100.00", pesos) + " libras");
-        System.out.println("Usted tiene 100 libras que equivalen a " + pesos.conversion("100.00", libras) + " pesos");
-        System.out.println("Usted tiene 100 libras que equivalen a " + dolares.conversion("100.00", libras) + " dolares");
+        System.out.print(libras.conversion("1.00", pesos) + "\n");
+        System.out.print(pesos.conversion("1.00", libras) + "\n");
+        System.out.print(dolares.conversion("1.00", libras) + "\n");
     }
 }
