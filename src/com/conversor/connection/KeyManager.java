@@ -3,6 +3,8 @@ package com.conversor.connection;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class KeyManager {
      public String readKey(String fileToRead) {
@@ -25,7 +27,8 @@ public class KeyManager {
             return myKey;
 
         } catch (FileNotFoundException error) {
-            error.printStackTrace();
+            String mensaje = "KEY_ID no encontrada";
+            JOptionPane.showMessageDialog(new JFrame(), mensaje, "¡Error!", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }  

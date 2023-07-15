@@ -1,12 +1,20 @@
 package com.conversor.test;
 
 import com.conversor.connection.URLReader;
-import com.excepcion.Excepcion;
 
 public class TestURLParser {
-    public static void main(String[] args) throws Excepcion {
+
+    public static void main(String[] args) {
+
         URLReader reader = new URLReader();
-        String resultado = reader.getRatio("MXN");
-        System.out.println(resultado + " longitud: " + resultado.length());
+        String[] ratios = {"MXN", "USD", "EUR", "GBP", "JPY", "KRW"};
+        
+        try {
+            for (String ratio : ratios) {
+                System.out.println(reader.getRatio(ratio));
+            }
+        } catch (Exception exception) {
+            System.err.println("No es posible conectarse al servicio.");
+        }
     }
 }

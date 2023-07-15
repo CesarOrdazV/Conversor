@@ -4,16 +4,19 @@
  */
 package com.conversor.interfase;
 
-import com.conversor.model.Moneda;
+import com.conversor.connection.URLReader;
+import com.conversor.model.Magnitud;
+import com.conversor.model.Temperatura;
 import com.formdev.flatlaf.FlatDarkLaf;
-
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 import javax.swing.UIManager;
 
 /**
  *
- * @author nigeh
+ * @author Cásar Ordaz
  */
 public class Window extends javax.swing.JFrame {
 
@@ -31,11 +34,15 @@ public class Window extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupIn = new javax.swing.ButtonGroup();
-        buttonGroupOut = new javax.swing.ButtonGroup();
+        buttonMonedaGroupIn = new javax.swing.ButtonGroup();
+        buttonMonedaGroupOut = new javax.swing.ButtonGroup();
+        buttonTempGroupIn = new javax.swing.ButtonGroup();
+        buttonTempGroupOut = new javax.swing.ButtonGroup();
+        buttonVelGroupIn = new javax.swing.ButtonGroup();
+        buttonVelGroupOut = new javax.swing.ButtonGroup();
         tituloLabel = new javax.swing.JLabel();
         inLabel = new javax.swing.JLabel();
         inText = new javax.swing.JTextField();
@@ -64,34 +71,54 @@ public class Window extends javax.swing.JFrame {
         conversionLongLabel = new javax.swing.JLabel();
         resultadoLongLabel = new javax.swing.JLabel();
         conversionLongButon = new javax.swing.JButton();
+        inLongCombo = new javax.swing.JComboBox<>();
+        outLongCombo = new javax.swing.JComboBox<>();
+        factorLongLabel = new javax.swing.JLabel();
         areaTab = new javax.swing.JPanel();
         inAreaLabel = new javax.swing.JLabel();
         outAreaLabel = new javax.swing.JLabel();
         conversionAreaLabel = new javax.swing.JLabel();
         resultadoAreaLabel = new javax.swing.JLabel();
         conversionAreaButon = new javax.swing.JButton();
+        inAreaCombo = new javax.swing.JComboBox<>();
+        outAreaCombo = new javax.swing.JComboBox<>();
+        factorAreaLabel = new javax.swing.JLabel();
         volTab = new javax.swing.JPanel();
         inVolLabel = new javax.swing.JLabel();
         outVolLabel = new javax.swing.JLabel();
         conversionVolLabel = new javax.swing.JLabel();
         resultadoVolLabel = new javax.swing.JLabel();
         conversionVolButon = new javax.swing.JButton();
+        inVolCombo = new javax.swing.JComboBox<>();
+        outVolCombo = new javax.swing.JComboBox<>();
+        factorVolLabel = new javax.swing.JLabel();
         velTab = new javax.swing.JPanel();
         inVelLabel = new javax.swing.JLabel();
         outVelLabel = new javax.swing.JLabel();
         conversionVelLabel = new javax.swing.JLabel();
         resultadoVelLabel = new javax.swing.JLabel();
         conversionVelButon = new javax.swing.JButton();
+        inMPS = new javax.swing.JRadioButton();
+        inMPH = new javax.swing.JRadioButton();
+        inKPH = new javax.swing.JRadioButton();
+        outMPS = new javax.swing.JRadioButton();
+        outKPH = new javax.swing.JRadioButton();
+        outMPH = new javax.swing.JRadioButton();
         tempTab = new javax.swing.JPanel();
         inTempLabel = new javax.swing.JLabel();
         outTempLabel = new javax.swing.JLabel();
         conversionTempLabel = new javax.swing.JLabel();
         resultadoTempLabel = new javax.swing.JLabel();
         conversionTempButon = new javax.swing.JButton();
+        inC = new javax.swing.JRadioButton();
+        inF = new javax.swing.JRadioButton();
+        inK = new javax.swing.JRadioButton();
+        outC = new javax.swing.JRadioButton();
+        outF = new javax.swing.JRadioButton();
+        outK = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ORDUS");
-        setPreferredSize(new java.awt.Dimension(720, 480));
         setResizable(false);
 
         tituloLabel.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -135,173 +162,134 @@ public class Window extends javax.swing.JFrame {
             }
         });
 
-        buttonGroupIn.add(inMXN);
+        buttonMonedaGroupIn.add(inMXN);
         inMXN.setSelected(true);
         inMXN.setText("Peso mexicano (MXN)");
-        inMXN.setActionCommand("MXN");
+        inMXN.setActionCommand("0");
 
-        buttonGroupIn.add(inUSD);
+        buttonMonedaGroupIn.add(inUSD);
         inUSD.setText("Dólar estadounidense (USD)");
-        inUSD.setActionCommand("USD");
+        inUSD.setActionCommand("1");
 
-        buttonGroupIn.add(inEUR);
+        buttonMonedaGroupIn.add(inEUR);
         inEUR.setText("Euro (EUR)");
-        inEUR.setActionCommand("EUR");
+        inEUR.setActionCommand("2");
 
-        buttonGroupIn.add(inGBP);
+        buttonMonedaGroupIn.add(inGBP);
         inGBP.setText("Libra esterlina (GBP)");
-        inGBP.setActionCommand("GBP");
+        inGBP.setActionCommand("3");
 
-        buttonGroupIn.add(inJPY);
+        buttonMonedaGroupIn.add(inJPY);
         inJPY.setText("Yen japonés (JPY)");
-        inJPY.setActionCommand("JPY");
+        inJPY.setActionCommand("4");
 
-        buttonGroupIn.add(inKRW);
+        buttonMonedaGroupIn.add(inKRW);
         inKRW.setText("Won surcoreano (KRW)");
-        inKRW.setActionCommand("KRW");
+        inKRW.setActionCommand("5");
 
-        buttonGroupOut.add(outMXN);
+        buttonMonedaGroupOut.add(outMXN);
         outMXN.setSelected(true);
         outMXN.setText("Peso mexicano (MXN)");
-        outMXN.setActionCommand("MXN");
+        outMXN.setActionCommand("0");
 
-        buttonGroupOut.add(outUSD);
+        buttonMonedaGroupOut.add(outUSD);
         outUSD.setText("Dólar estadounidense (USD)");
-        outUSD.setActionCommand("USD");
+        outUSD.setActionCommand("1");
 
-        buttonGroupOut.add(outEUR);
+        buttonMonedaGroupOut.add(outEUR);
         outEUR.setText("Euro (EUR)");
-        outEUR.setActionCommand("EUR");
+        outEUR.setActionCommand("2");
 
-        buttonGroupOut.add(outGBP);
+        buttonMonedaGroupOut.add(outGBP);
         outGBP.setText("Libra esterlina (GBP)");
-        outGBP.setActionCommand("GBP");
+        outGBP.setActionCommand("3");
 
-        buttonGroupOut.add(outJPY);
+        buttonMonedaGroupOut.add(outJPY);
         outJPY.setText("Yen japonés (JPY)");
-        outJPY.setActionCommand("JPY");
+        outJPY.setActionCommand("4");
 
-        buttonGroupOut.add(outKRW);
+        buttonMonedaGroupOut.add(outKRW);
         outKRW.setText("Won surcoreano (KRW)");
-        outKRW.setActionCommand("KRW");
+        outKRW.setActionCommand("5");
 
         javax.swing.GroupLayout monedaTabLayout = new javax.swing.GroupLayout(monedaTab);
         monedaTab.setLayout(monedaTabLayout);
         monedaTabLayout.setHorizontalGroup(
-                monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(monedaTabLayout.createSequentialGroup()
-                                .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(inMonedaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(monedaTabLayout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addGroup(monedaTabLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING,
-                                                                false)
-                                                        .addComponent(inUSD, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(inEUR, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(inGBP, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(inJPY, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(inKRW, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(inMXN, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                Short.MAX_VALUE))))
-                                .addGap(30, 30, 30)
-                                .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(outMonedaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(monedaTabLayout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addGroup(monedaTabLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING,
-                                                                false)
-                                                        .addComponent(outMXN, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(outUSD, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(outEUR, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(outGBP, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(outJPY, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(outKRW, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                Short.MAX_VALUE))))
-                                .addGap(30, 30, 30)
-                                .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, monedaTabLayout
-                                                .createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(conversionMonedaButon,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                                .addContainerGap())
-                                        .addComponent(resultadoMonedaLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(conversionMonedaLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))));
+            monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(monedaTabLayout.createSequentialGroup()
+                .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inMonedaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(monedaTabLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(inUSD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inEUR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inGBP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inJPY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inKRW, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inMXN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(30, 30, 30)
+                .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(outMonedaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(monedaTabLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(outMXN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(outUSD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(outEUR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(outGBP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(outJPY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(outKRW, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(30, 30, 30)
+                .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resultadoMonedaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(conversionMonedaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addGroup(monedaTabLayout.createSequentialGroup()
+                        .addComponent(conversionMonedaButon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
         monedaTabLayout.setVerticalGroup(
-                monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(monedaTabLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(monedaTabLayout
-                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(inMonedaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(outMonedaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(conversionMonedaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(monedaTabLayout.createSequentialGroup()
-                                                .addComponent(resultadoMonedaLabel,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 80,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(conversionMonedaButon,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 60,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(monedaTabLayout.createSequentialGroup()
-                                                .addGroup(monedaTabLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(inMXN)
-                                                        .addComponent(outMXN))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(monedaTabLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(inUSD)
-                                                        .addComponent(outUSD))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(monedaTabLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(inEUR)
-                                                        .addComponent(outEUR))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(monedaTabLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(inGBP)
-                                                        .addComponent(outGBP))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(monedaTabLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(inJPY, javax.swing.GroupLayout.PREFERRED_SIZE, 21,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(outJPY))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(monedaTabLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(inKRW)
-                                                        .addComponent(outKRW))))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+            monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(monedaTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inMonedaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outMonedaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conversionMonedaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(monedaTabLayout.createSequentialGroup()
+                        .addComponent(resultadoMonedaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(conversionMonedaButon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(monedaTabLayout.createSequentialGroup()
+                        .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inMXN)
+                            .addComponent(outMXN))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inUSD)
+                            .addComponent(outUSD))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inEUR)
+                            .addComponent(outEUR))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inGBP)
+                            .addComponent(outGBP))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inJPY, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(outJPY))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(monedaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inKRW)
+                            .addComponent(outKRW))))
+                .addGap(12, 12, 12))
+        );
 
-        monedaTabLayout.linkSize(javax.swing.SwingConstants.VERTICAL,
-                new java.awt.Component[] { conversionMonedaLabel, inMonedaLabel, outMonedaLabel });
+        monedaTabLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {conversionMonedaLabel, inMonedaLabel, outMonedaLabel});
 
         tabPanel.addTab("Moneda", monedaTab);
 
@@ -323,47 +311,68 @@ public class Window extends javax.swing.JFrame {
 
         conversionLongButon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         conversionLongButon.setText("Convertir");
+        conversionLongButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                conversionLongButonActionPerformed(evt);
+            }
+        });
+
+        inLongCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inLongCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro (m)", "Centímetro (cm)", "Milímetro (mm)", "Kilómetro (km)", "Pie (ft)", "Pulgada (in)", "Yarda (yd)", "Milla (mi)" }));
+
+        outLongCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        outLongCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro (m)", "Centímetro (cm)", "Milímetro (mm)", "Kilómetro (km)", "Pie (ft)", "Pulgada (in)", "Yarda (yd)", "Milla (mi)" }));
+
+        factorLongLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        factorLongLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        factorLongLabel.setText("Factor de conversión");
 
         javax.swing.GroupLayout longTabLayout = new javax.swing.GroupLayout(longTab);
         longTab.setLayout(longTabLayout);
         longTabLayout.setHorizontalGroup(
-                longTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(longTabLayout.createSequentialGroup()
-                                .addComponent(inLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(outLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addGroup(longTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(resultadoLongLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(conversionLongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200,
-                                                Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, longTabLayout
-                                                .createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(conversionLongButon, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addContainerGap()))));
-        longTabLayout.setVerticalGroup(
-                longTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(longTabLayout.createSequentialGroup()
+            longTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(longTabLayout.createSequentialGroup()
+                .addGroup(longTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(longTabLayout.createSequentialGroup()
+                        .addGroup(longTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(longTabLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(longTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(inLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(outLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(conversionLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(resultadoLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(conversionLongButon, javax.swing.GroupLayout.PREFERRED_SIZE, 60,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(16, Short.MAX_VALUE)));
+                                .addComponent(inLongCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30)
+                        .addGroup(longTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(outLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(outLongCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(longTabLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(factorLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addGroup(longTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resultadoLongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(conversionLongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addGroup(longTabLayout.createSequentialGroup()
+                        .addComponent(conversionLongButon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+        longTabLayout.setVerticalGroup(
+            longTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(longTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(longTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conversionLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(longTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(resultadoLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inLongCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outLongCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(longTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(factorLongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conversionLongButon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
 
         tabPanel.addTab("Longitud", longTab);
 
@@ -385,47 +394,68 @@ public class Window extends javax.swing.JFrame {
 
         conversionAreaButon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         conversionAreaButon.setText("Convertir");
+        conversionAreaButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                conversionAreaButonActionPerformed(evt);
+            }
+        });
+
+        inAreaCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inAreaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro cuadrado", "Centímetro cuadrado", "Milímetro cuadrado", "Pie cuadrado", "Pulgada cuadrada", "Yarda cuadrada", "Hectárea" }));
+
+        outAreaCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        outAreaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro cuadrado", "Centímetro cuadrado", "Milímetro cuadrado", "Pie cuadrado", "Pulgada cuadrada", "Yarda cuadrada", "Hectárea" }));
+
+        factorAreaLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        factorAreaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        factorAreaLabel.setText("Factor de conversión");
 
         javax.swing.GroupLayout areaTabLayout = new javax.swing.GroupLayout(areaTab);
         areaTab.setLayout(areaTabLayout);
         areaTabLayout.setHorizontalGroup(
-                areaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(areaTabLayout.createSequentialGroup()
-                                .addComponent(inAreaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(outAreaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addGroup(areaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(resultadoAreaLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(conversionAreaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200,
-                                                Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, areaTabLayout
-                                                .createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(conversionAreaButon, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addContainerGap()))));
-        areaTabLayout.setVerticalGroup(
-                areaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(areaTabLayout.createSequentialGroup()
+            areaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(areaTabLayout.createSequentialGroup()
+                .addGroup(areaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(areaTabLayout.createSequentialGroup()
+                        .addGroup(areaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inAreaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(areaTabLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(areaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(inAreaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(outAreaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(conversionAreaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(resultadoAreaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(conversionAreaButon, javax.swing.GroupLayout.PREFERRED_SIZE, 60,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(16, Short.MAX_VALUE)));
+                                .addComponent(inAreaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30)
+                        .addGroup(areaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(outAreaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(outAreaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(areaTabLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(factorAreaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(30, 30, 30)
+                .addGroup(areaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resultadoAreaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(conversionAreaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addGroup(areaTabLayout.createSequentialGroup()
+                        .addComponent(conversionAreaButon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+        areaTabLayout.setVerticalGroup(
+            areaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(areaTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(areaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inAreaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outAreaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conversionAreaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(areaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(resultadoAreaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inAreaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outAreaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(areaTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(factorAreaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conversionAreaButon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
 
         tabPanel.addTab("Área", areaTab);
 
@@ -447,47 +477,68 @@ public class Window extends javax.swing.JFrame {
 
         conversionVolButon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         conversionVolButon.setText("Convertir");
+        conversionVolButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                conversionVolButonActionPerformed(evt);
+            }
+        });
+
+        inVolCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inVolCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro cúbico", "Centímetro cúbico", "Litro", "Mililitro", "Galón" }));
+
+        outVolCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        outVolCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro cúbico", "Centímetro cúbico", "Litro", "Mililitro", "Galón" }));
+
+        factorVolLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        factorVolLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        factorVolLabel.setText("Factor de conversión");
 
         javax.swing.GroupLayout volTabLayout = new javax.swing.GroupLayout(volTab);
         volTab.setLayout(volTabLayout);
         volTabLayout.setHorizontalGroup(
-                volTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(volTabLayout.createSequentialGroup()
-                                .addComponent(inVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(outVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addGroup(volTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(resultadoVolLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(conversionVolLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200,
-                                                Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, volTabLayout
-                                                .createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(conversionVolButon, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addContainerGap()))));
-        volTabLayout.setVerticalGroup(
-                volTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(volTabLayout.createSequentialGroup()
+            volTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(volTabLayout.createSequentialGroup()
+                .addGroup(volTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(volTabLayout.createSequentialGroup()
+                        .addGroup(volTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(volTabLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(volTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(inVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(outVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(conversionVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(resultadoVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(conversionVolButon, javax.swing.GroupLayout.PREFERRED_SIZE, 60,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(16, Short.MAX_VALUE)));
+                                .addComponent(inVolCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30)
+                        .addGroup(volTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(outVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(outVolCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(volTabLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(factorVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addGroup(volTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resultadoVolLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(conversionVolLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addGroup(volTabLayout.createSequentialGroup()
+                        .addComponent(conversionVolButon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
+        volTabLayout.setVerticalGroup(
+            volTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(volTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(volTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conversionVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(volTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(resultadoVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inVolCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outVolCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(volTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(factorVolLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conversionVolButon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
 
         tabPanel.addTab("Volumen", volTab);
 
@@ -509,47 +560,105 @@ public class Window extends javax.swing.JFrame {
 
         conversionVelButon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         conversionVelButon.setText("Convertir");
+        conversionVelButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                conversionVelButonActionPerformed(evt);
+            }
+        });
+
+        buttonVelGroupIn.add(inMPS);
+        inMPS.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inMPS.setSelected(true);
+        inMPS.setText("m/s");
+        inMPS.setToolTipText("Metros por segundo");
+        inMPS.setActionCommand("0");
+
+        buttonVelGroupIn.add(inMPH);
+        inMPH.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inMPH.setText("mi/h");
+        inMPH.setToolTipText("Millas por hora");
+        inMPH.setActionCommand("2");
+
+        buttonVelGroupIn.add(inKPH);
+        inKPH.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inKPH.setText("km/h");
+        inKPH.setToolTipText("Kilómetos por hora");
+        inKPH.setActionCommand("1");
+
+        buttonVelGroupOut.add(outMPS);
+        outMPS.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        outMPS.setSelected(true);
+        outMPS.setText("m/s");
+        outMPS.setToolTipText("Metros por segundo");
+        outMPS.setActionCommand("0");
+
+        buttonVelGroupOut.add(outKPH);
+        outKPH.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        outKPH.setText("km/h");
+        outKPH.setToolTipText("Kilómetros por hora");
+        outKPH.setActionCommand("1");
+
+        buttonVelGroupOut.add(outMPH);
+        outMPH.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        outMPH.setText("mi/h");
+        outMPH.setToolTipText("Millas por hora");
+        outMPH.setActionCommand("2");
 
         javax.swing.GroupLayout velTabLayout = new javax.swing.GroupLayout(velTab);
         velTab.setLayout(velTabLayout);
         velTabLayout.setHorizontalGroup(
-                velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(velTabLayout.createSequentialGroup()
-                                .addComponent(inVelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(outVelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addGroup(velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(resultadoVelLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(conversionVelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200,
-                                                Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, velTabLayout
-                                                .createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(conversionVelButon, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addContainerGap()))));
+            velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(velTabLayout.createSequentialGroup()
+                .addGroup(velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inVelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(velTabLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(inMPH, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inMPS, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inKPH, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))))
+                .addGap(30, 30, 30)
+                .addGroup(velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(outVelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(outMPH, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(outKPH, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                        .addComponent(outMPS, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(30, 30, 30)
+                .addGroup(velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resultadoVelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(conversionVelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addGroup(velTabLayout.createSequentialGroup()
+                        .addComponent(conversionVelButon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
         velTabLayout.setVerticalGroup(
-                velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(velTabLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(inVelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(outVelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(conversionVelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(resultadoVelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(conversionVelButon, javax.swing.GroupLayout.PREFERRED_SIZE, 60,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(16, Short.MAX_VALUE)));
+            velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(velTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inVelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outVelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conversionVelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(resultadoVelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(velTabLayout.createSequentialGroup()
+                        .addGroup(velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inMPS)
+                            .addComponent(outMPS))
+                        .addGap(18, 18, 18)
+                        .addGroup(velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inKPH)
+                            .addComponent(outKPH))))
+                .addGap(18, 18, 18)
+                .addGroup(velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(conversionVelButon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(velTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(inMPH)
+                        .addComponent(outMPH)))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
 
         tabPanel.addTab("Velocidad", velTab);
 
@@ -571,116 +680,305 @@ public class Window extends javax.swing.JFrame {
 
         conversionTempButon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         conversionTempButon.setText("Convertir");
+        conversionTempButon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                conversionTempButonActionPerformed(evt);
+            }
+        });
+
+        buttonTempGroupIn.add(inC);
+        inC.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inC.setSelected(true);
+        inC.setText("Grado Celsius");
+        inC.setActionCommand("0");
+
+        buttonTempGroupIn.add(inF);
+        inF.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inF.setText("Grado Fahrenheit");
+        inF.setActionCommand("1");
+
+        buttonTempGroupIn.add(inK);
+        inK.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inK.setText("Kelvin");
+        inK.setActionCommand("2");
+
+        buttonTempGroupOut.add(outC);
+        outC.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        outC.setSelected(true);
+        outC.setText("Grado Celsius");
+        outC.setActionCommand("0");
+
+        buttonTempGroupOut.add(outF);
+        outF.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        outF.setText("Grado Fahrenheit");
+        outF.setActionCommand("1");
+
+        buttonTempGroupOut.add(outK);
+        outK.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        outK.setText("Kelvin");
+        outK.setActionCommand("2");
 
         javax.swing.GroupLayout tempTabLayout = new javax.swing.GroupLayout(tempTab);
         tempTab.setLayout(tempTabLayout);
         tempTabLayout.setHorizontalGroup(
-                tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(tempTabLayout.createSequentialGroup()
-                                .addComponent(inTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(outTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addGroup(tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(resultadoTempLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(conversionTempLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200,
-                                                Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tempTabLayout
-                                                .createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(conversionTempButon, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addContainerGap()))));
+            tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tempTabLayout.createSequentialGroup()
+                .addGroup(tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(tempTabLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(inF, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                            .addComponent(inC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(inK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(30, 30, 30)
+                .addGroup(tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(outC, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outF, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outK, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resultadoTempLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(conversionTempLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addGroup(tempTabLayout.createSequentialGroup()
+                        .addComponent(conversionTempButon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+        );
         tempTabLayout.setVerticalGroup(
-                tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(tempTabLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(inTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(outTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(conversionTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(resultadoTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(conversionTempButon, javax.swing.GroupLayout.PREFERRED_SIZE, 60,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(16, Short.MAX_VALUE)));
+            tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tempTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(conversionTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resultadoTempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(tempTabLayout.createSequentialGroup()
+                        .addGroup(tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inC)
+                            .addComponent(outC))
+                        .addGap(18, 18, 18)
+                        .addGroup(tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inF)
+                            .addComponent(outF))))
+                .addGap(18, 18, 18)
+                .addGroup(tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(conversionTempButon, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(tempTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(inK)
+                        .addComponent(outK)))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
 
         tabPanel.addTab("Temperatura", tempTab);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tituloLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(inLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190,
-                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(inText))
-                                        .addComponent(tabPanel))
-                                .addGap(30, 30, 30)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tituloLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(inLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(inText))
+                    .addComponent(tabPanel))
+                .addGap(30, 30, 30))
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(tituloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(inLabel, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(inText, javax.swing.GroupLayout.DEFAULT_SIZE, 60,
-                                                Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tabPanel)
-                                .addGap(30, 30, 30)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(tituloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(inLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(inText, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tabPanel)
+                .addGap(30, 30, 30))
+        );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void conversionLongButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conversionLongButonActionPerformed
+        String[] ratios = {"1.00000000", "100.000000000", "1000.00000000", "0.00100000", "3.28083990", "39.37007870", "1.09361330", "0.00062137"};
+        String[] unidades = {"m", "cm", "mm", "km", "ft", "in", "yd", "mi"};
+
+        int inLongIndex = inLongCombo.getSelectedIndex();
+        int outLongIndex = outLongCombo.getSelectedIndex();
+
+        Magnitud inLong = new Magnitud(ratios[inLongIndex]);
+        Magnitud outLong = new Magnitud(ratios[outLongIndex]);
+        String cantidad = inText.getText();
+
+        try {
+            String resultado = outLong.conversion(cantidad, inLong, 4);
+            resultadoLongLabel.setText(resultado);
+            String factor = outLong.conversion("1.0000000", inLong, 4);
+            factorLongLabel.setText("1.0 " + unidades[inLongIndex] + " = " + factor + " " + unidades[outLongIndex]);
+        } catch (Exception exception) {
+            String mensaje = "El valor no es un número de dígito decimal, punto decimal ni está en formato exponencial de notación \"e\"";
+            JOptionPane.showMessageDialog(new JFrame(), mensaje, "¡Error!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_conversionLongButonActionPerformed
+
+    private void conversionTempButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conversionTempButonActionPerformed
+        String[] ratios = {"1.0", "1.8", "1.0"};
+
+        String inTempTipo = buttonTempGroupIn.getSelection().getActionCommand();
+        String outTempTipo = buttonTempGroupOut.getSelection().getActionCommand();
+        String eleccion = inTempTipo + outTempTipo;
+
+        int inTempIndex = Integer.parseInt(inTempTipo);
+        int outTempIndex = Integer.parseInt(outTempTipo);
+
+        Temperatura inTemp = new Temperatura(ratios[inTempIndex]);
+        Temperatura outTemp = new Temperatura(ratios[outTempIndex]);
+        String cantidad = inText.getText();
+
+        try {
+            String resultado = "0.0";
+
+            switch (eleccion) {
+                case "01":
+                    resultado = outTemp.conversionDespl(cantidad, inTemp, "32", 2);
+                    break;
+                case "10":
+                    resultado = outTemp.conversionDespl(cantidad, inTemp, "-32", 2);
+                    break;
+                case "02":
+                    resultado = outTemp.conversionDespl(cantidad, inTemp, "273.15", 2);
+                    break;
+                case "20":
+                    resultado = outTemp.conversionDespl(cantidad, inTemp, "-273.15", 2);
+                    break;
+                case "12":
+                    resultado = outTemp.conversionDespl(cantidad, inTemp, "459.67", 2);
+                    break;
+                case "21":
+                    resultado = outTemp.conversionDespl(cantidad, inTemp, "-459.67", 2);
+                    break;
+                default:
+                    resultado = outTemp.conversion(cantidad, inTemp, 2);
+            }
+            resultadoTempLabel.setText(resultado);
+        } catch (Exception exception) {
+            String mensaje = "El valor no es un número de dígito decimal, punto decimal ni está en formato exponencial de notación \"e\"";
+            JOptionPane.showMessageDialog(new JFrame(), mensaje, "¡Error!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_conversionTempButonActionPerformed
+
+    private void conversionAreaButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conversionAreaButonActionPerformed
+        String[] ratios = {"1.00000000", "10000.00000000", "1000000.00000000", "10.76391040", "1550.00310000", "1.19599005", "0.00010000"};
+        String[] unidades = {"m2", "cm2", "mm2", "ft2", "in2", "yd2", "Ha"};
+        
+        int inAreaIndex = inAreaCombo.getSelectedIndex();
+        int outAreaIndex = outAreaCombo.getSelectedIndex();
+
+        Magnitud inArea = new Magnitud(ratios[inAreaIndex]);
+        Magnitud outArea = new Magnitud(ratios[outAreaIndex]);
+        String cantidad = inText.getText();
+
+        try {
+            String resultado = outArea.conversion(cantidad, inArea, 6);
+            resultadoAreaLabel.setText(resultado);
+            String factor = outArea.conversion("1.0000000", inArea, 6);
+            factorAreaLabel.setText("1.0 " + unidades[inAreaIndex] + " = " + factor + " " + unidades[outAreaIndex]);
+        } catch (Exception exception) {
+            String mensaje = "El valor no es un número de dígito decimal, punto decimal ni está en formato exponencial de notación \"e\"";
+            JOptionPane.showMessageDialog(new JFrame(), mensaje, "¡Error!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_conversionAreaButonActionPerformed
+
+    private void conversionVolButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conversionVolButonActionPerformed
+        String[] ratios = {"1.00000000", "1000000.00000000", "1000.00000000", "1000000.00000000", "264.172053"};
+        String[] unidades = {"m3", "cm3", "L", "mL", "gal"};
+        
+        int inVolIndex = inVolCombo.getSelectedIndex();
+        int outVolIndex = outVolCombo.getSelectedIndex();
+
+        Magnitud inVol = new Magnitud(ratios[inVolIndex]);
+        Magnitud outVol = new Magnitud(ratios[outVolIndex]);
+        String cantidad = inText.getText();
+
+        try {
+            String resultado = outVol.conversion(cantidad, inVol, 6);
+            resultadoVolLabel.setText(resultado);
+            String factor = outVol.conversion("1.0000000", inVol, 6);
+            factorVolLabel.setText("1.0 " + unidades[inVolIndex] + " = " + factor + " " + unidades[outVolIndex]);
+        } catch (Exception exception) {
+            String mensaje = "El valor no es un número de dígito decimal, punto decimal ni está en formato exponencial de notación \"e\"";
+            JOptionPane.showMessageDialog(new JFrame(), mensaje, "¡Error!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_conversionVolButonActionPerformed
+
+    private void conversionVelButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conversionVelButonActionPerformed
+        String[] ratios = {"1.00000000", "3.60000000", "2.23693629"};
+        String[] unidades = {"m/s", "km/h", "mi/h"};
+        
+        int inVelIndex = Integer.parseInt(buttonVelGroupIn.getSelection().getActionCommand());
+        int outVelIndex = Integer.parseInt(buttonVelGroupOut.getSelection().getActionCommand());
+        
+        Magnitud inVel = new Magnitud(ratios[inVelIndex]);
+        Magnitud outVel = new Magnitud(ratios[outVelIndex]);
+        String cantidad = inText.getText();
+        
+        try {
+            String resultado = outVel.conversion(cantidad, inVel, 2);
+            resultadoVelLabel.setText(resultado);
+        } catch (Exception exception) {
+            String mensaje = "El valor no es un número de dígito decimal, punto decimal ni está en formato exponencial de notación \"e\"";
+            JOptionPane.showMessageDialog(new JFrame(), mensaje, "¡Error!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_conversionVelButonActionPerformed
 
     private void inTextMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_inTextMouseClicked
         inText.setText("");
     }// GEN-LAST:event_inTextMouseClicked
 
     private void conversionMonedaButonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_conversionMonedaButonActionPerformed
-        String inMonedaTipo = buttonGroupIn.getSelection().getActionCommand();
-        String outMonedaTipo = buttonGroupOut.getSelection().getActionCommand();
-        String monto = inText.getText();
+        String[] codigosMoneda = {"MXN", "USD", "EUR", "GBP", "JPY", "KRW"};
+        String[] ratios = {"16.745855", "1.0", "0.889957", "0.763884", "138.69490883", "1269.33"};
 
-        if (inMonedaTipo == outMonedaTipo) {
-            resultadoMonedaLabel.setText(monto);
-        } else {
-            try {
-                Moneda inMoneda = new Moneda(inMonedaTipo);
-                Moneda outMoneda = new Moneda(outMonedaTipo);
-                String resultado = outMoneda.conversion(monto, inMoneda);
+        ArrayList<String> ratiosList = new ArrayList<String>();
+        URLReader reader = new URLReader();
 
-                resultadoMonedaLabel.setText(resultado);
-            } catch (Exception exception) {
-                if (monto.contains(",")) {
-                    JOptionPane.showMessageDialog(new JFrame(), "Utilice punto decimal", "¡Alerta!",
-                            JOptionPane.ERROR_MESSAGE);
-                } else if (monto.contains(" ")) {
-                    JOptionPane.showMessageDialog(new JFrame(), "No utilice espacios", "¡Alerta!",
-                            JOptionPane.ERROR_MESSAGE);
+        try {
+            for (String codigoMoneda : codigosMoneda) {
+                if (codigoMoneda == "USD") {
+                    ratiosList.add("1.0");
                 } else {
-                    JOptionPane.showMessageDialog(new JFrame(), "Formato no válido", "¡Alerta!",
-                            JOptionPane.ERROR_MESSAGE);
+                    ratiosList.add(reader.getRatio(codigoMoneda));
                 }
             }
+            ratios = new String[ratiosList.size()];
+            ratiosList.toArray(ratios);
+        } catch (Exception exception) {
+            String mensaje = "No se logró conectar con el servidor, se utilizarán los valores por defecto";
+            JOptionPane.showMessageDialog(new JFrame(), mensaje, "¡Error de conexión!", JOptionPane.WARNING_MESSAGE);
+        }
+
+        int inMonedaIndex = Integer.parseInt(buttonMonedaGroupIn.getSelection().getActionCommand());
+        int outMonedaIndex = Integer.parseInt(buttonMonedaGroupOut.getSelection().getActionCommand());
+
+        Magnitud inMoneda = new Magnitud(ratios[inMonedaIndex]);
+        Magnitud outMoneda = new Magnitud(ratios[outMonedaIndex]);
+        String monto = inText.getText();
+
+        try {
+            String resultado = outMoneda.conversion(monto, inMoneda, 2);
+            resultadoMonedaLabel.setText(resultado);
+        } catch (Exception exception) {
+            String mensaje = "El valor no es un número de dígito decimal, punto decimal ni está en formato exponencial de notación \"e\"";
+            JOptionPane.showMessageDialog(new JFrame(), mensaje, "¡Error!", JOptionPane.ERROR_MESSAGE);
         }
     }// GEN-LAST:event_conversionMonedaButonActionPerformed
 
@@ -703,8 +1001,12 @@ public class Window extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel areaTab;
-    private javax.swing.ButtonGroup buttonGroupIn;
-    private javax.swing.ButtonGroup buttonGroupOut;
+    private javax.swing.ButtonGroup buttonMonedaGroupIn;
+    private javax.swing.ButtonGroup buttonMonedaGroupOut;
+    private javax.swing.ButtonGroup buttonTempGroupIn;
+    private javax.swing.ButtonGroup buttonTempGroupOut;
+    private javax.swing.ButtonGroup buttonVelGroupIn;
+    private javax.swing.ButtonGroup buttonVelGroupOut;
     private javax.swing.JButton conversionAreaButon;
     private javax.swing.JLabel conversionAreaLabel;
     private javax.swing.JButton conversionLongButon;
@@ -717,33 +1019,54 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel conversionVelLabel;
     private javax.swing.JButton conversionVolButon;
     private javax.swing.JLabel conversionVolLabel;
+    private javax.swing.JLabel factorAreaLabel;
+    private javax.swing.JLabel factorLongLabel;
+    private javax.swing.JLabel factorVolLabel;
+    private javax.swing.JComboBox<String> inAreaCombo;
     private javax.swing.JLabel inAreaLabel;
+    private javax.swing.JRadioButton inC;
     private javax.swing.JRadioButton inEUR;
+    private javax.swing.JRadioButton inF;
     private javax.swing.JRadioButton inGBP;
     private javax.swing.JRadioButton inJPY;
+    private javax.swing.JRadioButton inK;
+    private javax.swing.JRadioButton inKPH;
     private javax.swing.JRadioButton inKRW;
     private javax.swing.JLabel inLabel;
+    private javax.swing.JComboBox<String> inLongCombo;
     private javax.swing.JLabel inLongLabel;
+    private javax.swing.JRadioButton inMPH;
+    private javax.swing.JRadioButton inMPS;
     private javax.swing.JRadioButton inMXN;
     private javax.swing.JLabel inMonedaLabel;
     private javax.swing.JLabel inTempLabel;
     private javax.swing.JTextField inText;
     private javax.swing.JRadioButton inUSD;
     private javax.swing.JLabel inVelLabel;
+    private javax.swing.JComboBox<String> inVolCombo;
     private javax.swing.JLabel inVolLabel;
     private javax.swing.JPanel longTab;
     private javax.swing.JPanel monedaTab;
+    private javax.swing.JComboBox<String> outAreaCombo;
     private javax.swing.JLabel outAreaLabel;
+    private javax.swing.JRadioButton outC;
     private javax.swing.JRadioButton outEUR;
+    private javax.swing.JRadioButton outF;
     private javax.swing.JRadioButton outGBP;
     private javax.swing.JRadioButton outJPY;
+    private javax.swing.JRadioButton outK;
+    private javax.swing.JRadioButton outKPH;
     private javax.swing.JRadioButton outKRW;
+    private javax.swing.JComboBox<String> outLongCombo;
     private javax.swing.JLabel outLongLabel;
+    private javax.swing.JRadioButton outMPH;
+    private javax.swing.JRadioButton outMPS;
     private javax.swing.JRadioButton outMXN;
     private javax.swing.JLabel outMonedaLabel;
     private javax.swing.JLabel outTempLabel;
     private javax.swing.JRadioButton outUSD;
     private javax.swing.JLabel outVelLabel;
+    private javax.swing.JComboBox<String> outVolCombo;
     private javax.swing.JLabel outVolLabel;
     private javax.swing.JLabel resultadoAreaLabel;
     private javax.swing.JLabel resultadoLongLabel;
