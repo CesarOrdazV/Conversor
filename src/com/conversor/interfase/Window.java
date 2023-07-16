@@ -132,11 +132,16 @@ public class Window extends javax.swing.JFrame {
         inText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         inText.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         inText.setText("0.00");
+        inText.setToolTipText("Ingrese el valor a convertir en formato decimal con separador decimal de punto y sin separador de miles");
         inText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inTextMouseClicked(evt);
             }
         });
+
+        tabPanel.setToolTipText("Tipos de conversión");
+
+        monedaTab.setToolTipText("Conversor de moneda");
 
         inMonedaLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inMonedaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -153,9 +158,11 @@ public class Window extends javax.swing.JFrame {
         resultadoMonedaLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         resultadoMonedaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         resultadoMonedaLabel.setText("0.00");
+        resultadoMonedaLabel.setToolTipText("Valor resultante de la conversión");
 
         conversionMonedaButon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         conversionMonedaButon.setText("Convertir");
+        conversionMonedaButon.setToolTipText("Click para convertir el valor ingresado");
         conversionMonedaButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conversionMonedaButonActionPerformed(evt);
@@ -164,52 +171,64 @@ public class Window extends javax.swing.JFrame {
 
         buttonMonedaGroupIn.add(inMXN);
         inMXN.setSelected(true);
-        inMXN.setText("Peso mexicano (MXN)");
+        inMXN.setText("MXN");
+        inMXN.setToolTipText("Peso mexicano origen");
         inMXN.setActionCommand("0");
 
         buttonMonedaGroupIn.add(inUSD);
-        inUSD.setText("Dólar estadounidense (USD)");
+        inUSD.setText("USD");
+        inUSD.setToolTipText("Dólar estadounidense origen");
         inUSD.setActionCommand("1");
 
         buttonMonedaGroupIn.add(inEUR);
-        inEUR.setText("Euro (EUR)");
+        inEUR.setText("EUR");
+        inEUR.setToolTipText("Euro origen");
         inEUR.setActionCommand("2");
 
         buttonMonedaGroupIn.add(inGBP);
-        inGBP.setText("Libra esterlina (GBP)");
+        inGBP.setText("GBP");
+        inGBP.setToolTipText("Libra esterlina origen");
         inGBP.setActionCommand("3");
 
         buttonMonedaGroupIn.add(inJPY);
-        inJPY.setText("Yen japonés (JPY)");
+        inJPY.setText("JPY");
+        inJPY.setToolTipText("Yen japonés origen");
         inJPY.setActionCommand("4");
 
         buttonMonedaGroupIn.add(inKRW);
-        inKRW.setText("Won surcoreano (KRW)");
+        inKRW.setText("KRW");
+        inKRW.setToolTipText("Won surcoreano origen");
         inKRW.setActionCommand("5");
 
         buttonMonedaGroupOut.add(outMXN);
         outMXN.setSelected(true);
-        outMXN.setText("Peso mexicano (MXN)");
+        outMXN.setText("MXN");
+        outMXN.setToolTipText("Peso mexicano destino");
         outMXN.setActionCommand("0");
 
         buttonMonedaGroupOut.add(outUSD);
-        outUSD.setText("Dólar estadounidense (USD)");
+        outUSD.setText("USD");
+        outUSD.setToolTipText("Dólar estadounidense destino");
         outUSD.setActionCommand("1");
 
         buttonMonedaGroupOut.add(outEUR);
-        outEUR.setText("Euro (EUR)");
+        outEUR.setText("EUR");
+        outEUR.setToolTipText("Euro destino");
         outEUR.setActionCommand("2");
 
         buttonMonedaGroupOut.add(outGBP);
-        outGBP.setText("Libra esterlina (GBP)");
+        outGBP.setText("GBP");
+        outGBP.setToolTipText("Libra esterlina destino");
         outGBP.setActionCommand("3");
 
         buttonMonedaGroupOut.add(outJPY);
-        outJPY.setText("Yen japonés (JPY)");
+        outJPY.setText("JPY");
+        outJPY.setToolTipText("Yen japonés destino");
         outJPY.setActionCommand("4");
 
         buttonMonedaGroupOut.add(outKRW);
-        outKRW.setText("Won surcoreano (KRW)");
+        outKRW.setText("KRW");
+        outKRW.setToolTipText("Won surcoreano destino");
         outKRW.setActionCommand("5");
 
         javax.swing.GroupLayout monedaTabLayout = new javax.swing.GroupLayout(monedaTab);
@@ -293,6 +312,8 @@ public class Window extends javax.swing.JFrame {
 
         tabPanel.addTab("Moneda", monedaTab);
 
+        longTab.setToolTipText("Conversor de longitud");
+
         inLongLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inLongLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inLongLabel.setText("Longitud origen");
@@ -308,9 +329,11 @@ public class Window extends javax.swing.JFrame {
         resultadoLongLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         resultadoLongLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         resultadoLongLabel.setText("0.00");
+        resultadoLongLabel.setToolTipText("Valor resultante de la conversión");
 
         conversionLongButon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         conversionLongButon.setText("Convertir");
+        conversionLongButon.setToolTipText("Click para convertir el valor ingresado");
         conversionLongButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conversionLongButonActionPerformed(evt);
@@ -319,13 +342,16 @@ public class Window extends javax.swing.JFrame {
 
         inLongCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inLongCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro (m)", "Centímetro (cm)", "Milímetro (mm)", "Kilómetro (km)", "Pie (ft)", "Pulgada (in)", "Yarda (yd)", "Milla (mi)" }));
+        inLongCombo.setToolTipText("Longitud de origen");
 
         outLongCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         outLongCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro (m)", "Centímetro (cm)", "Milímetro (mm)", "Kilómetro (km)", "Pie (ft)", "Pulgada (in)", "Yarda (yd)", "Milla (mi)" }));
+        outLongCombo.setToolTipText("Longitud de destino");
 
         factorLongLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         factorLongLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         factorLongLabel.setText("Factor de conversión");
+        factorLongLabel.setToolTipText("Factor de equivalencia de la conversión utilizada");
 
         javax.swing.GroupLayout longTabLayout = new javax.swing.GroupLayout(longTab);
         longTab.setLayout(longTabLayout);
@@ -376,6 +402,8 @@ public class Window extends javax.swing.JFrame {
 
         tabPanel.addTab("Longitud", longTab);
 
+        areaTab.setToolTipText("Conversor de área");
+
         inAreaLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inAreaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inAreaLabel.setText("Área origen");
@@ -391,9 +419,11 @@ public class Window extends javax.swing.JFrame {
         resultadoAreaLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         resultadoAreaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         resultadoAreaLabel.setText("0.00");
+        resultadoAreaLabel.setToolTipText("Valor resultante de la conversión");
 
         conversionAreaButon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         conversionAreaButon.setText("Convertir");
+        conversionAreaButon.setToolTipText("Click para convertir el valor ingresado");
         conversionAreaButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conversionAreaButonActionPerformed(evt);
@@ -401,14 +431,17 @@ public class Window extends javax.swing.JFrame {
         });
 
         inAreaCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        inAreaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro cuadrado", "Centímetro cuadrado", "Milímetro cuadrado", "Pie cuadrado", "Pulgada cuadrada", "Yarda cuadrada", "Hectárea" }));
+        inAreaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro cuadrado (m2)", "Centímetro cuadrado (cm2)", "Milímetro cuadrado (mm2)", "Pie cuadrado (ft2)", "Pulgada cuadrada (in2)", "Yarda cuadrada (yd2)", "Hectárea (Ha)" }));
+        inAreaCombo.setToolTipText("Área de origen");
 
         outAreaCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        outAreaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro cuadrado", "Centímetro cuadrado", "Milímetro cuadrado", "Pie cuadrado", "Pulgada cuadrada", "Yarda cuadrada", "Hectárea" }));
+        outAreaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro cuadrado (m2)", "Centímetro cuadrado (cm2)", "Milímetro cuadrado (mm2)", "Pie cuadrado (ft2)", "Pulgada cuadrada (in2)", "Yarda cuadrada (yd2)", "Hectárea (Ha)" }));
+        outAreaCombo.setToolTipText("Área de destino");
 
         factorAreaLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         factorAreaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         factorAreaLabel.setText("Factor de conversión");
+        factorAreaLabel.setToolTipText("Factor de equivalencia de la conversión utilizada");
 
         javax.swing.GroupLayout areaTabLayout = new javax.swing.GroupLayout(areaTab);
         areaTab.setLayout(areaTabLayout);
@@ -459,6 +492,8 @@ public class Window extends javax.swing.JFrame {
 
         tabPanel.addTab("Área", areaTab);
 
+        volTab.setToolTipText("Conversor de volumen");
+
         inVolLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inVolLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inVolLabel.setText("Volumen origen");
@@ -474,9 +509,11 @@ public class Window extends javax.swing.JFrame {
         resultadoVolLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         resultadoVolLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         resultadoVolLabel.setText("0.00");
+        resultadoVolLabel.setToolTipText("Valor resultante de la conversión");
 
         conversionVolButon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         conversionVolButon.setText("Convertir");
+        conversionVolButon.setToolTipText("Click para convertir el valor ingresado");
         conversionVolButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conversionVolButonActionPerformed(evt);
@@ -484,14 +521,17 @@ public class Window extends javax.swing.JFrame {
         });
 
         inVolCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        inVolCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro cúbico", "Centímetro cúbico", "Litro", "Mililitro", "Galón" }));
+        inVolCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro cúbico (m3)", "Centímetro cúbico (cm3)", "Litro (L)", "Mililitro (mL)", "Galón (gal)" }));
+        inVolCombo.setToolTipText("Volumen de origen");
 
         outVolCombo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        outVolCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro cúbico", "Centímetro cúbico", "Litro", "Mililitro", "Galón" }));
+        outVolCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metro cúbico (m3)", "Centímetro cúbico (cm3)", "Litro (L)", "Mililitro (mL)", "Galón (gal)" }));
+        outVolCombo.setToolTipText("Volumen de destino");
 
         factorVolLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         factorVolLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         factorVolLabel.setText("Factor de conversión");
+        factorVolLabel.setToolTipText("Factor de equivalencia de la conversión utilizada");
 
         javax.swing.GroupLayout volTabLayout = new javax.swing.GroupLayout(volTab);
         volTab.setLayout(volTabLayout);
@@ -542,6 +582,8 @@ public class Window extends javax.swing.JFrame {
 
         tabPanel.addTab("Volumen", volTab);
 
+        velTab.setToolTipText("Conversor de velocidad");
+
         inVelLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inVelLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inVelLabel.setText("Velocidad origen");
@@ -557,9 +599,11 @@ public class Window extends javax.swing.JFrame {
         resultadoVelLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         resultadoVelLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         resultadoVelLabel.setText("0.00");
+        resultadoVelLabel.setToolTipText("Valor resultante de la conversión");
 
         conversionVelButon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         conversionVelButon.setText("Convertir");
+        conversionVelButon.setToolTipText("Click para convertir el valor ingresado");
         conversionVelButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conversionVelButonActionPerformed(evt);
@@ -570,38 +614,38 @@ public class Window extends javax.swing.JFrame {
         inMPS.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inMPS.setSelected(true);
         inMPS.setText("m/s");
-        inMPS.setToolTipText("Metros por segundo");
+        inMPS.setToolTipText("Metros por segundo origen");
         inMPS.setActionCommand("0");
 
         buttonVelGroupIn.add(inMPH);
         inMPH.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inMPH.setText("mi/h");
-        inMPH.setToolTipText("Millas por hora");
+        inMPH.setToolTipText("Millas por hora origen");
         inMPH.setActionCommand("2");
 
         buttonVelGroupIn.add(inKPH);
         inKPH.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inKPH.setText("km/h");
-        inKPH.setToolTipText("Kilómetos por hora");
+        inKPH.setToolTipText("Kilómetos por hora origen");
         inKPH.setActionCommand("1");
 
         buttonVelGroupOut.add(outMPS);
         outMPS.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         outMPS.setSelected(true);
         outMPS.setText("m/s");
-        outMPS.setToolTipText("Metros por segundo");
+        outMPS.setToolTipText("Metros por segundo destino");
         outMPS.setActionCommand("0");
 
         buttonVelGroupOut.add(outKPH);
         outKPH.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         outKPH.setText("km/h");
-        outKPH.setToolTipText("Kilómetros por hora");
+        outKPH.setToolTipText("Kilómetros por hora destino");
         outKPH.setActionCommand("1");
 
         buttonVelGroupOut.add(outMPH);
         outMPH.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         outMPH.setText("mi/h");
-        outMPH.setToolTipText("Millas por hora");
+        outMPH.setToolTipText("Millas por hora destino");
         outMPH.setActionCommand("2");
 
         javax.swing.GroupLayout velTabLayout = new javax.swing.GroupLayout(velTab);
@@ -662,6 +706,8 @@ public class Window extends javax.swing.JFrame {
 
         tabPanel.addTab("Velocidad", velTab);
 
+        tempTab.setToolTipText("Conversor de temperatura");
+
         inTempLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inTempLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inTempLabel.setText("Temperatura origen");
@@ -677,9 +723,11 @@ public class Window extends javax.swing.JFrame {
         resultadoTempLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         resultadoTempLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         resultadoTempLabel.setText("0.00");
+        resultadoTempLabel.setToolTipText("Valor resultante de la conversión");
 
         conversionTempButon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         conversionTempButon.setText("Convertir");
+        conversionTempButon.setToolTipText("Click para convertir el valor ingresado");
         conversionTempButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 conversionTempButonActionPerformed(evt);
@@ -689,33 +737,39 @@ public class Window extends javax.swing.JFrame {
         buttonTempGroupIn.add(inC);
         inC.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inC.setSelected(true);
-        inC.setText("Grado Celsius");
+        inC.setText("°C");
+        inC.setToolTipText("Grado Celsius origen");
         inC.setActionCommand("0");
 
         buttonTempGroupIn.add(inF);
         inF.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        inF.setText("Grado Fahrenheit");
+        inF.setText("°F");
+        inF.setToolTipText("Grado Fahrenheit origen");
         inF.setActionCommand("1");
 
         buttonTempGroupIn.add(inK);
         inK.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        inK.setText("Kelvin");
+        inK.setText("K");
+        inK.setToolTipText("Kelvin origen");
         inK.setActionCommand("2");
 
         buttonTempGroupOut.add(outC);
         outC.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         outC.setSelected(true);
-        outC.setText("Grado Celsius");
+        outC.setText("°C");
+        outC.setToolTipText("Grado Celsius destino");
         outC.setActionCommand("0");
 
         buttonTempGroupOut.add(outF);
         outF.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        outF.setText("Grado Fahrenheit");
+        outF.setText("°F");
+        outF.setToolTipText("Grado Fahrenheit destino");
         outF.setActionCommand("1");
 
         buttonTempGroupOut.add(outK);
         outK.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        outK.setText("Kelvin");
+        outK.setText("K");
+        outK.setToolTipText("Kelvin destino");
         outK.setActionCommand("2");
 
         javax.swing.GroupLayout tempTabLayout = new javax.swing.GroupLayout(tempTab);

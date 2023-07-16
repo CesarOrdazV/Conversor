@@ -97,16 +97,23 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="0.00"/>
+        <Property name="toolTipText" type="java.lang.String" value="Ingrese el valor a convertir en formato decimal con separador decimal de punto y sin separador de miles"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="inTextMouseClicked"/>
       </Events>
     </Component>
     <Container class="javax.swing.JTabbedPane" name="tabPanel">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Tipos de conversi&#xf3;n"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="monedaTab">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Conversor de moneda"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Moneda">
@@ -248,6 +255,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="0.00"/>
+                <Property name="toolTipText" type="java.lang.String" value="Valor resultante de la conversi&#xf3;n"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="conversionMonedaButon">
@@ -256,6 +264,7 @@
                   <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Convertir"/>
+                <Property name="toolTipText" type="java.lang.String" value="Click para convertir el valor ingresado"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conversionMonedaButonActionPerformed"/>
@@ -267,7 +276,8 @@
                   <ComponentRef name="buttonMonedaGroupIn"/>
                 </Property>
                 <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Peso mexicano (MXN)"/>
+                <Property name="text" type="java.lang.String" value="MXN"/>
+                <Property name="toolTipText" type="java.lang.String" value="Peso mexicano origen"/>
                 <Property name="actionCommand" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
@@ -276,7 +286,8 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonMonedaGroupIn"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="D&#xf3;lar estadounidense (USD)"/>
+                <Property name="text" type="java.lang.String" value="USD"/>
+                <Property name="toolTipText" type="java.lang.String" value="D&#xf3;lar estadounidense origen"/>
                 <Property name="actionCommand" type="java.lang.String" value="1"/>
               </Properties>
             </Component>
@@ -285,7 +296,8 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonMonedaGroupIn"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Euro (EUR)"/>
+                <Property name="text" type="java.lang.String" value="EUR"/>
+                <Property name="toolTipText" type="java.lang.String" value="Euro origen"/>
                 <Property name="actionCommand" type="java.lang.String" value="2"/>
               </Properties>
             </Component>
@@ -294,7 +306,8 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonMonedaGroupIn"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Libra esterlina (GBP)"/>
+                <Property name="text" type="java.lang.String" value="GBP"/>
+                <Property name="toolTipText" type="java.lang.String" value="Libra esterlina origen"/>
                 <Property name="actionCommand" type="java.lang.String" value="3"/>
               </Properties>
             </Component>
@@ -303,7 +316,8 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonMonedaGroupIn"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Yen japon&#xe9;s (JPY)"/>
+                <Property name="text" type="java.lang.String" value="JPY"/>
+                <Property name="toolTipText" type="java.lang.String" value="Yen japon&#xe9;s origen"/>
                 <Property name="actionCommand" type="java.lang.String" value="4"/>
               </Properties>
             </Component>
@@ -312,7 +326,8 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonMonedaGroupIn"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Won surcoreano (KRW)"/>
+                <Property name="text" type="java.lang.String" value="KRW"/>
+                <Property name="toolTipText" type="java.lang.String" value="Won surcoreano origen"/>
                 <Property name="actionCommand" type="java.lang.String" value="5"/>
               </Properties>
             </Component>
@@ -322,7 +337,8 @@
                   <ComponentRef name="buttonMonedaGroupOut"/>
                 </Property>
                 <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Peso mexicano (MXN)"/>
+                <Property name="text" type="java.lang.String" value="MXN"/>
+                <Property name="toolTipText" type="java.lang.String" value="Peso mexicano destino"/>
                 <Property name="actionCommand" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
@@ -331,7 +347,8 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonMonedaGroupOut"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="D&#xf3;lar estadounidense (USD)"/>
+                <Property name="text" type="java.lang.String" value="USD"/>
+                <Property name="toolTipText" type="java.lang.String" value="D&#xf3;lar estadounidense destino"/>
                 <Property name="actionCommand" type="java.lang.String" value="1"/>
               </Properties>
             </Component>
@@ -340,7 +357,8 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonMonedaGroupOut"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Euro (EUR)"/>
+                <Property name="text" type="java.lang.String" value="EUR"/>
+                <Property name="toolTipText" type="java.lang.String" value="Euro destino"/>
                 <Property name="actionCommand" type="java.lang.String" value="2"/>
               </Properties>
             </Component>
@@ -349,7 +367,8 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonMonedaGroupOut"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Libra esterlina (GBP)"/>
+                <Property name="text" type="java.lang.String" value="GBP"/>
+                <Property name="toolTipText" type="java.lang.String" value="Libra esterlina destino"/>
                 <Property name="actionCommand" type="java.lang.String" value="3"/>
               </Properties>
             </Component>
@@ -358,7 +377,8 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonMonedaGroupOut"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Yen japon&#xe9;s (JPY)"/>
+                <Property name="text" type="java.lang.String" value="JPY"/>
+                <Property name="toolTipText" type="java.lang.String" value="Yen japon&#xe9;s destino"/>
                 <Property name="actionCommand" type="java.lang.String" value="4"/>
               </Properties>
             </Component>
@@ -367,13 +387,17 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonMonedaGroupOut"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Won surcoreano (KRW)"/>
+                <Property name="text" type="java.lang.String" value="KRW"/>
+                <Property name="toolTipText" type="java.lang.String" value="Won surcoreano destino"/>
                 <Property name="actionCommand" type="java.lang.String" value="5"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="longTab">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Conversor de longitud"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Longitud">
@@ -478,6 +502,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="0.00"/>
+                <Property name="toolTipText" type="java.lang.String" value="Valor resultante de la conversi&#xf3;n"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="conversionLongButon">
@@ -486,6 +511,7 @@
                   <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Convertir"/>
+                <Property name="toolTipText" type="java.lang.String" value="Click para convertir el valor ingresado"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conversionLongButonActionPerformed"/>
@@ -508,6 +534,7 @@
                     <StringItem index="7" value="Milla (mi)"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Longitud de origen"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -530,6 +557,7 @@
                     <StringItem index="7" value="Milla (mi)"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Longitud de destino"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -542,11 +570,15 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Factor de conversi&#xf3;n"/>
+                <Property name="toolTipText" type="java.lang.String" value="Factor de equivalencia de la conversi&#xf3;n utilizada"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="areaTab">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Conversor de &#xe1;rea"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="&#xc1;rea">
@@ -651,6 +683,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="0.00"/>
+                <Property name="toolTipText" type="java.lang.String" value="Valor resultante de la conversi&#xf3;n"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="conversionAreaButon">
@@ -659,6 +692,7 @@
                   <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Convertir"/>
+                <Property name="toolTipText" type="java.lang.String" value="Click para convertir el valor ingresado"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conversionAreaButonActionPerformed"/>
@@ -671,15 +705,16 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="7">
-                    <StringItem index="0" value="Metro cuadrado"/>
-                    <StringItem index="1" value="Cent&#xed;metro cuadrado"/>
-                    <StringItem index="2" value="Mil&#xed;metro cuadrado"/>
-                    <StringItem index="3" value="Pie cuadrado"/>
-                    <StringItem index="4" value="Pulgada cuadrada"/>
-                    <StringItem index="5" value="Yarda cuadrada"/>
-                    <StringItem index="6" value="Hect&#xe1;rea"/>
+                    <StringItem index="0" value="Metro cuadrado (m2)"/>
+                    <StringItem index="1" value="Cent&#xed;metro cuadrado (cm2)"/>
+                    <StringItem index="2" value="Mil&#xed;metro cuadrado (mm2)"/>
+                    <StringItem index="3" value="Pie cuadrado (ft2)"/>
+                    <StringItem index="4" value="Pulgada cuadrada (in2)"/>
+                    <StringItem index="5" value="Yarda cuadrada (yd2)"/>
+                    <StringItem index="6" value="Hect&#xe1;rea (Ha)"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&#xc1;rea de origen"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -692,15 +727,16 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="7">
-                    <StringItem index="0" value="Metro cuadrado"/>
-                    <StringItem index="1" value="Cent&#xed;metro cuadrado"/>
-                    <StringItem index="2" value="Mil&#xed;metro cuadrado"/>
-                    <StringItem index="3" value="Pie cuadrado"/>
-                    <StringItem index="4" value="Pulgada cuadrada"/>
-                    <StringItem index="5" value="Yarda cuadrada"/>
-                    <StringItem index="6" value="Hect&#xe1;rea"/>
+                    <StringItem index="0" value="Metro cuadrado (m2)"/>
+                    <StringItem index="1" value="Cent&#xed;metro cuadrado (cm2)"/>
+                    <StringItem index="2" value="Mil&#xed;metro cuadrado (mm2)"/>
+                    <StringItem index="3" value="Pie cuadrado (ft2)"/>
+                    <StringItem index="4" value="Pulgada cuadrada (in2)"/>
+                    <StringItem index="5" value="Yarda cuadrada (yd2)"/>
+                    <StringItem index="6" value="Hect&#xe1;rea (Ha)"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="&#xc1;rea de destino"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -713,11 +749,15 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Factor de conversi&#xf3;n"/>
+                <Property name="toolTipText" type="java.lang.String" value="Factor de equivalencia de la conversi&#xf3;n utilizada"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="volTab">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Conversor de volumen"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Volumen">
@@ -822,6 +862,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="0.00"/>
+                <Property name="toolTipText" type="java.lang.String" value="Valor resultante de la conversi&#xf3;n"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="conversionVolButon">
@@ -830,6 +871,7 @@
                   <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Convertir"/>
+                <Property name="toolTipText" type="java.lang.String" value="Click para convertir el valor ingresado"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conversionVolButonActionPerformed"/>
@@ -842,13 +884,14 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="5">
-                    <StringItem index="0" value="Metro c&#xfa;bico"/>
-                    <StringItem index="1" value="Cent&#xed;metro c&#xfa;bico"/>
-                    <StringItem index="2" value="Litro"/>
-                    <StringItem index="3" value="Mililitro"/>
-                    <StringItem index="4" value="Gal&#xf3;n"/>
+                    <StringItem index="0" value="Metro c&#xfa;bico (m3)"/>
+                    <StringItem index="1" value="Cent&#xed;metro c&#xfa;bico (cm3)"/>
+                    <StringItem index="2" value="Litro (L)"/>
+                    <StringItem index="3" value="Mililitro (mL)"/>
+                    <StringItem index="4" value="Gal&#xf3;n (gal)"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Volumen de origen"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -861,13 +904,14 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="5">
-                    <StringItem index="0" value="Metro c&#xfa;bico"/>
-                    <StringItem index="1" value="Cent&#xed;metro c&#xfa;bico"/>
-                    <StringItem index="2" value="Litro"/>
-                    <StringItem index="3" value="Mililitro"/>
-                    <StringItem index="4" value="Gal&#xf3;n"/>
+                    <StringItem index="0" value="Metro c&#xfa;bico (m3)"/>
+                    <StringItem index="1" value="Cent&#xed;metro c&#xfa;bico (cm3)"/>
+                    <StringItem index="2" value="Litro (L)"/>
+                    <StringItem index="3" value="Mililitro (mL)"/>
+                    <StringItem index="4" value="Gal&#xf3;n (gal)"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" value="Volumen de destino"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -880,11 +924,15 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Factor de conversi&#xf3;n"/>
+                <Property name="toolTipText" type="java.lang.String" value="Factor de equivalencia de la conversi&#xf3;n utilizada"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="velTab">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Conversor de velocidad"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Velocidad">
@@ -1001,6 +1049,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="0.00"/>
+                <Property name="toolTipText" type="java.lang.String" value="Valor resultante de la conversi&#xf3;n"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="conversionVelButon">
@@ -1009,6 +1058,7 @@
                   <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Convertir"/>
+                <Property name="toolTipText" type="java.lang.String" value="Click para convertir el valor ingresado"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conversionVelButonActionPerformed"/>
@@ -1024,7 +1074,7 @@
                 </Property>
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="m/s"/>
-                <Property name="toolTipText" type="java.lang.String" value="Metros por segundo"/>
+                <Property name="toolTipText" type="java.lang.String" value="Metros por segundo origen"/>
                 <Property name="actionCommand" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
@@ -1037,7 +1087,7 @@
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="mi/h"/>
-                <Property name="toolTipText" type="java.lang.String" value="Millas por hora"/>
+                <Property name="toolTipText" type="java.lang.String" value="Millas por hora origen"/>
                 <Property name="actionCommand" type="java.lang.String" value="2"/>
               </Properties>
             </Component>
@@ -1050,7 +1100,7 @@
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="km/h"/>
-                <Property name="toolTipText" type="java.lang.String" value="Kil&#xf3;metos por hora"/>
+                <Property name="toolTipText" type="java.lang.String" value="Kil&#xf3;metos por hora origen"/>
                 <Property name="actionCommand" type="java.lang.String" value="1"/>
               </Properties>
             </Component>
@@ -1064,7 +1114,7 @@
                 </Property>
                 <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="m/s"/>
-                <Property name="toolTipText" type="java.lang.String" value="Metros por segundo"/>
+                <Property name="toolTipText" type="java.lang.String" value="Metros por segundo destino"/>
                 <Property name="actionCommand" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
@@ -1077,7 +1127,7 @@
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="km/h"/>
-                <Property name="toolTipText" type="java.lang.String" value="Kil&#xf3;metros por hora"/>
+                <Property name="toolTipText" type="java.lang.String" value="Kil&#xf3;metros por hora destino"/>
                 <Property name="actionCommand" type="java.lang.String" value="1"/>
               </Properties>
             </Component>
@@ -1090,13 +1140,16 @@
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="mi/h"/>
-                <Property name="toolTipText" type="java.lang.String" value="Millas por hora"/>
+                <Property name="toolTipText" type="java.lang.String" value="Millas por hora destino"/>
                 <Property name="actionCommand" type="java.lang.String" value="2"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="tempTab">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Conversor de temperatura"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Temperatura">
@@ -1211,6 +1264,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="0.00"/>
+                <Property name="toolTipText" type="java.lang.String" value="Valor resultante de la conversi&#xf3;n"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="conversionTempButon">
@@ -1219,6 +1273,7 @@
                   <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Convertir"/>
+                <Property name="toolTipText" type="java.lang.String" value="Click para convertir el valor ingresado"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conversionTempButonActionPerformed"/>
@@ -1233,7 +1288,8 @@
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Grado Celsius"/>
+                <Property name="text" type="java.lang.String" value="&#xb0;C"/>
+                <Property name="toolTipText" type="java.lang.String" value="Grado Celsius origen"/>
                 <Property name="actionCommand" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
@@ -1245,7 +1301,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Grado Fahrenheit"/>
+                <Property name="text" type="java.lang.String" value="&#xb0;F"/>
+                <Property name="toolTipText" type="java.lang.String" value="Grado Fahrenheit origen"/>
                 <Property name="actionCommand" type="java.lang.String" value="1"/>
               </Properties>
             </Component>
@@ -1257,7 +1314,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Kelvin"/>
+                <Property name="text" type="java.lang.String" value="K"/>
+                <Property name="toolTipText" type="java.lang.String" value="Kelvin origen"/>
                 <Property name="actionCommand" type="java.lang.String" value="2"/>
               </Properties>
             </Component>
@@ -1270,7 +1328,8 @@
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Grado Celsius"/>
+                <Property name="text" type="java.lang.String" value="&#xb0;C"/>
+                <Property name="toolTipText" type="java.lang.String" value="Grado Celsius destino"/>
                 <Property name="actionCommand" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
@@ -1282,7 +1341,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Grado Fahrenheit"/>
+                <Property name="text" type="java.lang.String" value="&#xb0;F"/>
+                <Property name="toolTipText" type="java.lang.String" value="Grado Fahrenheit destino"/>
                 <Property name="actionCommand" type="java.lang.String" value="1"/>
               </Properties>
             </Component>
@@ -1294,7 +1354,8 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Kelvin"/>
+                <Property name="text" type="java.lang.String" value="K"/>
+                <Property name="toolTipText" type="java.lang.String" value="Kelvin destino"/>
                 <Property name="actionCommand" type="java.lang.String" value="2"/>
               </Properties>
             </Component>
